@@ -6,12 +6,30 @@ import ProcessSteps from '@/components/ProcessSteps';
 import { practiceAreas } from '@/data/practiceAreas';
 
 export const metadata: Metadata = {
-  title: '[866]JACKLAW | California Employment Lawyers',
+  title: '[866]JACKLAW | Abogados Laborales en California',
   description:
-    'Employment lawyers in Los Angeles helping California employees with unpaid overtime, wrongful termination, discrimination, harassment, retaliation, and wage theft.',
+    'Abogados laborales en Los Angeles que ayudan a empleados de California con overtime no pagado, despido injusto, discriminación, acoso, represalias y violaciones de salarios.',
 };
 
-export default function HomePage() {
+const esSteps = [
+  {
+    step: '1',
+    title: 'Cuéntenos Qué Pasó',
+    desc: 'Llame al (866) JACKLAW o complete el formulario. Gratuito, confidencial, sin compromiso.',
+  },
+  {
+    step: '2',
+    title: 'Revisamos los Hechos',
+    desc: 'Nuestro equipo analiza su situación y evalúa si puede existir un reclamo laboral válido.',
+  },
+  {
+    step: '3',
+    title: 'Le Explicamos Sus Opciones',
+    desc: 'Le informamos qué opciones legales puede tener. Usted decide cómo proceder.',
+  },
+];
+
+export default function EsPage() {
   return (
     <>
       {/* ─── HERO ─── */}
@@ -19,7 +37,6 @@ export default function HomePage() {
         className="relative bg-[#111111] text-white py-28 md:py-36 px-4 sm:px-6 overflow-hidden"
         aria-labelledby="hero-headline"
       >
-        {/* Logo watermark */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -31,7 +48,6 @@ export default function HomePage() {
           }}
           aria-hidden="true"
         />
-        {/* Bottom gradient fade */}
         <div
           className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-white"
           aria-hidden="true"
@@ -39,21 +55,21 @@ export default function HomePage() {
 
         <div className="relative max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center bg-[#e07820]/10 border border-[#e07820]/25 text-[#e07820] text-[11px] font-bold px-4 py-1.5 rounded-full mb-8 uppercase tracking-[0.15em]">
-            California Employment Law
+            Derecho Laboral en California
           </div>
 
           <h1
             id="hero-headline"
             className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6"
           >
-            Your Rights.{' '}
-            <span className="text-[#e07820]">Our Fight.</span>
+            Sus Derechos.{' '}
+            <span className="text-[#e07820]">Nuestra Lucha.</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Unpaid overtime. Wrongful termination. Discrimination. Harassment.{' '}
-            <strong className="text-white font-semibold">[866]JACKLAW</strong> represents
-            California employees — at no upfront cost.
+            Overtime no pagado. Despido injusto. Discriminación. Acoso.{' '}
+            <strong className="text-white font-semibold">[866]JACKLAW</strong> representa
+            a empleados de California — sin costo inicial.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
@@ -61,25 +77,24 @@ export default function HomePage() {
               href="tel:+18665225529"
               className="bg-[#e07820] hover:bg-[#c9660f] text-white font-bold py-4 px-9 rounded-lg text-[15px] tracking-wide transition-colors shadow-lg"
             >
-              Call (866) JACKLAW
+              Llame: (866) JACKLAW
             </a>
             <a
-              href="/contact"
+              href="/es/contact"
               className="bg-white/8 hover:bg-white/12 border border-white/15 hover:border-white/30 text-white font-bold py-4 px-9 rounded-lg text-[15px] tracking-wide transition-all"
             >
-              Free Case Evaluation
+              Evaluación Gratuita de Caso
             </a>
           </div>
 
-          {/* Inline trust chips */}
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] text-gray-400">
-            <span>No upfront fees</span>
+            <span>Sin honorarios anticipados</span>
             <span className="text-gray-600" aria-hidden="true">&middot;</span>
-            <span>Confidential</span>
+            <span>Consulta confidencial</span>
             <span className="text-gray-600" aria-hidden="true">&middot;</span>
-            <span>Spanish &amp; Chinese available</span>
+            <span>Atención en español y chino</span>
             <span className="text-gray-600" aria-hidden="true">&middot;</span>
-            <span>Free evaluation</span>
+            <span>Evaluación gratuita</span>
           </div>
         </div>
       </section>
@@ -89,10 +104,10 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
             {[
-              { stat: '100%', label: 'Employee-side only' },
-              { stat: 'Free', label: 'Initial consultation' },
-              { stat: '3', label: 'Languages served' },
-              { stat: '$0', label: 'Upfront cost' },
+              { stat: '100%', label: 'Solo representamos empleados' },
+              { stat: 'Gratis', label: 'Consulta inicial' },
+              { stat: '3', label: 'Idiomas disponibles' },
+              { stat: '$0', label: 'Costo anticipado' },
             ].map((item) => (
               <div
                 key={item.label}
@@ -115,35 +130,35 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div>
             <SectionHeading
-              eyebrow="Why it matters"
-              subtitle="California has some of the strongest labor protections in the country. Yet many employers fall short."
+              eyebrow="Por qué importa"
+              subtitle="California tiene algunas de las protecciones laborales más sólidas del país. Pero muchos empleadores no las cumplen."
             >
-              Your employer has lawyers. You can too.
+              Su empleador tiene abogados. Usted también puede tenerlos.
             </SectionHeading>
             <p className="text-gray-500 leading-relaxed mb-8 text-[15px]">
-              At <strong className="text-[#111111]">[866]JACKLAW</strong>, we represent
-              employees exclusively — never employers. We review your situation, explain
-              your legal options, and assess whether you may have a valid claim, at no
-              cost in the initial consultation.
+              En <strong className="text-[#111111]">[866]JACKLAW</strong>, representamos
+              exclusivamente a empleados — nunca a empleadores. Revisamos su situación,
+              explicamos sus opciones legales y evaluamos si puede haber un reclamo
+              válido, sin costo en la consulta inicial.
             </p>
             <a
-              href="/contact"
+              href="/es/contact"
               className="inline-flex items-center gap-2 bg-[#111111] hover:bg-[#1f1f1f] text-white font-bold py-3 px-6 rounded-lg text-sm tracking-wide transition-colors"
             >
-              Request free evaluation <span aria-hidden="true">→</span>
+              Solicite evaluación gratuita <span aria-hidden="true">→</span>
             </a>
           </div>
 
           <div className="bg-[#111111] rounded-2xl p-8 text-white">
             <div className="text-[#e07820] font-bold text-[11px] uppercase tracking-[0.18em] mb-6">
-              What we do for you
+              Lo que hacemos por usted
             </div>
             <ul className="space-y-4">
               {[
-                'Review the facts of your situation carefully',
-                'Explain your rights under California law',
-                'Assess whether a valid employment claim may exist',
-                'Give you honest information — no pressure, no promises',
+                'Revisamos los hechos de su situación con atención',
+                'Explicamos sus derechos bajo la ley de California',
+                'Evaluamos si puede existir un reclamo laboral válido',
+                'Le informamos sin presión sobre sus opciones legales',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-[14px] leading-relaxed text-gray-200">
                   <span className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full border border-[#e07820]/40 bg-[#e07820]/10 flex items-center justify-center text-[#e07820] text-[10px] font-bold">
@@ -162,18 +177,18 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             center
-            eyebrow="What we handle"
-            subtitle="We represent California employees across a wide range of employment claims."
+            eyebrow="Lo que manejamos"
+            subtitle="Representamos a empleados de California en una amplia gama de reclamos laborales."
           >
-            <span id="practice-areas-heading">Practice Areas</span>
+            <span id="practice-areas-heading">Áreas de Práctica</span>
           </SectionHeading>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
             {practiceAreas.map((area, i) => (
               <PracticeAreaCard
                 key={area.id}
                 index={i + 1}
-                title={area.titleEn}
-                description={area.descEn}
+                title={area.titleEs}
+                description={area.descEs}
                 href="/services"
               />
             ))}
@@ -183,7 +198,7 @@ export default function HomePage() {
               href="/services"
               className="inline-flex items-center gap-2 border border-gray-300 text-gray-600 hover:border-[#111111] hover:text-[#111111] font-semibold py-2.5 px-6 rounded-lg text-sm transition-colors"
             >
-              View all practice areas <span aria-hidden="true">→</span>
+              Ver todas las áreas de práctica <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
@@ -195,32 +210,34 @@ export default function HomePage() {
           <SectionHeading
             center
             light
-            eyebrow="Our approach"
-            subtitle="What sets [866]JACKLAW apart."
+            eyebrow="Nuestro enfoque"
+            subtitle="Lo que distingue a [866]JACKLAW de otras firmas."
           >
-            <span id="why-jacklaw-heading">Why Workers Choose [866]JACKLAW</span>
+            <span id="why-jacklaw-heading">
+              ¿Por Qué los Trabajadores Eligen [866]JACKLAW?
+            </span>
           </SectionHeading>
           <div className="grid sm:grid-cols-2 gap-4 mt-10">
             {[
               {
                 num: '01',
-                title: 'We Only Represent Employees',
-                desc: 'Our firm is dedicated exclusively to representing workers, never employers. Our interests are always aligned with yours.',
+                title: 'Solo Representamos Empleados',
+                desc: 'Nuestra firma se dedica exclusivamente a representar a trabajadores. Nuestros intereses siempre están del mismo lado que los suyos.',
               },
               {
                 num: '02',
-                title: 'Service in Your Language',
-                desc: 'Consultations in Spanish and Chinese. No interpreters needed — you will always understand exactly what is happening in your case.',
+                title: 'Atención en Su Idioma',
+                desc: 'Ofrecemos atención en español y chino. No necesitará intérpretes ni sentirá que no entiende lo que pasa con su caso.',
               },
               {
                 num: '03',
-                title: 'Honest Evaluation, No Exaggerated Promises',
-                desc: 'We will tell you clearly whether a valid claim exists and what you can reasonably expect — no inflated promises.',
+                title: 'Evaluación Honesta y Sin Promesas',
+                desc: 'Le explicaremos con claridad si hay un reclamo válido y qué puede razonablemente esperar.',
               },
               {
                 num: '04',
-                title: 'No Barriers to Getting Started',
-                desc: 'Free, confidential consultation. Many cases are handled on contingency — you pay nothing unless there is a recovery.',
+                title: 'Sin Barreras para Empezar',
+                desc: 'La consulta es gratuita y confidencial. Muchos casos se manejan en base a honorarios contingentes.',
               },
             ].map((item) => (
               <div
@@ -243,26 +260,24 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             center
-            eyebrow="How it works"
-            subtitle="Getting started is simple, confidential, and carries no obligation."
+            eyebrow="Cómo funciona"
+            subtitle="Comenzar es sencillo, confidencial y sin ningún compromiso de su parte."
           >
-            <span id="process-heading">Three Steps to Know Your Options</span>
+            <span id="process-heading">Tres Pasos para Conocer Sus Opciones</span>
           </SectionHeading>
-
-          <ProcessSteps />
-
+          <ProcessSteps steps={esSteps} />
           <div className="mt-14 flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href="tel:+18665225529"
               className="bg-[#e07820] hover:bg-[#c9660f] text-white font-bold py-3.5 px-8 rounded-lg text-sm tracking-wide transition-colors shadow-md"
             >
-              Call: (866) JACKLAW
+              Llame: (866) JACKLAW
             </a>
             <a
-              href="/contact"
+              href="/es/contact"
               className="border border-gray-200 hover:border-[#111111] text-gray-600 hover:text-[#111111] font-bold py-3.5 px-8 rounded-lg text-sm tracking-wide transition-colors"
             >
-              Complete the form
+              Completar formulario
             </a>
           </div>
         </div>
@@ -271,49 +286,30 @@ export default function HomePage() {
       {/* ─── LANGUAGE CALLOUT ─── */}
       <section className="py-20 px-4 sm:px-6 bg-[#f5f5f5]" aria-labelledby="language-callout-heading">
         <div className="max-w-5xl mx-auto">
-          <SectionHeading
-            center
-            eyebrow="Multilingual service"
-          >
-            <span id="language-callout-heading">We Serve Workers in Their Language</span>
+          <SectionHeading center eyebrow="Servicio multilingüe">
+            <span id="language-callout-heading">Atendemos a Trabajadores en Su Idioma</span>
           </SectionHeading>
           <p className="text-center text-gray-500 text-[15px] -mt-6 mb-10 max-w-xl mx-auto">
-            Your rights in California do not depend on your language or immigration status.
+            Sus derechos en California no dependen de su idioma ni de su estatus migratorio.
           </p>
           <div className="grid md:grid-cols-2 gap-5">
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
-              <div className="text-[11px] font-bold text-[#e07820] uppercase tracking-[0.18em] mb-3">
-                Español
-              </div>
-              <h3 className="font-bold text-[#111111] text-xl mb-3 leading-snug">
-                Spanish-Speaking Workers
-              </h3>
+              <div className="text-[11px] font-bold text-[#e07820] uppercase tracking-[0.18em] mb-3">English</div>
+              <h3 className="font-bold text-[#111111] text-xl mb-3 leading-snug">English-Speaking Clients</h3>
               <p className="text-gray-500 text-[14px] leading-relaxed mb-5">
-                If you are a Spanish-speaking worker in California, your rights are the
-                same as any other employee — regardless of immigration status. We offer
-                full service in Spanish.
+                We also offer full service in English for clients who prefer it.
               </p>
-              <a
-                href="/es"
-                className="inline-flex items-center gap-1.5 text-[#e07820] hover:text-[#c9660f] font-semibold text-sm transition-colors"
-              >
-                Consulta gratis en español <span aria-hidden="true">→</span>
+              <a href="/" className="inline-flex items-center gap-1.5 text-[#e07820] hover:text-[#c9660f] font-semibold text-sm transition-colors">
+                View English site <span aria-hidden="true">→</span>
               </a>
             </div>
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
-              <div className="text-[11px] font-bold text-[#e07820] uppercase tracking-[0.18em] mb-3">
-                中文
-              </div>
-              <h3 className="font-bold text-[#111111] text-xl mb-3 leading-snug">
-                华裔劳工支持
-              </h3>
+              <div className="text-[11px] font-bold text-[#e07820] uppercase tracking-[0.18em] mb-3">中文</div>
+              <h3 className="font-bold text-[#111111] text-xl mb-3 leading-snug">华裔劳工支持</h3>
               <p className="text-gray-500 text-[14px] leading-relaxed mb-5">
                 我们为加州华裔工人提供劳动法法律服务。无论您的移民身份如何，您在加州都享有同等的劳工权利。
               </p>
-              <a
-                href="/chinese-labor-law"
-                className="inline-flex items-center gap-1.5 text-[#e07820] hover:text-[#c9660f] font-semibold text-sm transition-colors"
-              >
+              <a href="/chinese-labor-law" className="inline-flex items-center gap-1.5 text-[#e07820] hover:text-[#c9660f] font-semibold text-sm transition-colors">
                 了解更多中文信息 <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -323,12 +319,12 @@ export default function HomePage() {
 
       {/* ─── FINAL CTA ─── */}
       <CTASection
-        headline="Think your employment rights were violated?"
-        subtext="You don't have to face it alone. Call today for a free, confidential evaluation — no obligation, no upfront cost."
-        primaryLabel="Call: (866) JACKLAW"
+        headline="¿Cree que sus derechos laborales fueron violados?"
+        subtext="No tiene que enfrentarlo solo. Llame hoy para una evaluación gratuita y confidencial — sin compromiso, sin costo inicial."
+        primaryLabel="Llame: (866) JACKLAW"
         primaryHref="tel:+18665225529"
-        secondaryLabel="Contact form"
-        secondaryHref="/contact"
+        secondaryLabel="Formulario de contacto"
+        secondaryHref="/es/contact"
       />
     </>
   );
