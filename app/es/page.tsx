@@ -189,7 +189,9 @@ export default function EsPage() {
                 index={i + 1}
                 title={area.titleEs}
                 description={area.descEs}
-                href="/services"
+                detail={area.detailEn}
+                href="/es/contact"
+                ctaLabel="Consulta gratuita →"
               />
             ))}
           </div>

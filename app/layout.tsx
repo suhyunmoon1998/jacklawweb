@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MapSection from '@/components/MapSection';
 import CalendlyWidget from '@/components/CalendlyWidget';
+import ScrollObserver from '@/components/ScrollObserver';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -91,6 +92,7 @@ export default function RootLayout({
         <MapSection />
         <Footer />
         <CalendlyWidget />
+        <ScrollObserver />
       </body>
     </html>
   );

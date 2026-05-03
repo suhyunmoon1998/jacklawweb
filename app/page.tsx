@@ -19,7 +19,6 @@ export default function HomePage() {
         className="relative bg-[#111111] text-white py-28 md:py-36 px-4 sm:px-6 overflow-hidden"
         aria-labelledby="hero-headline"
       >
-        {/* Logo watermark */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -31,32 +30,31 @@ export default function HomePage() {
           }}
           aria-hidden="true"
         />
-        {/* Bottom gradient fade */}
         <div
           className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-white"
           aria-hidden="true"
         />
 
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center bg-[#e07820]/10 border border-[#e07820]/25 text-[#e07820] text-[11px] font-bold px-4 py-1.5 rounded-full mb-8 uppercase tracking-[0.15em]">
+          <div className="hero-badge inline-flex items-center bg-[#e07820]/10 border border-[#e07820]/25 text-[#e07820] text-[11px] font-bold px-4 py-1.5 rounded-full mb-8 uppercase tracking-[0.15em]">
             California Employment Law
           </div>
 
           <h1
             id="hero-headline"
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6"
+            className="hero-h1 text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6"
           >
             Your Rights.{' '}
             <span className="text-[#e07820]">Our Fight.</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="hero-desc text-lg sm:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
             Unpaid overtime. Wrongful termination. Discrimination. Harassment.{' '}
             <strong className="text-white font-semibold">[866]JACKLAW</strong> represents
             California employees — at no upfront cost.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+          <div className="hero-btns flex flex-col sm:flex-row gap-3 justify-center mb-10">
             <a
               href="tel:+18665225529"
               className="bg-[#e07820] hover:bg-[#c9660f] text-white font-bold py-4 px-9 rounded-lg text-[15px] tracking-wide transition-colors shadow-lg"
@@ -71,8 +69,7 @@ export default function HomePage() {
             </a>
           </div>
 
-          {/* Inline trust chips */}
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] text-gray-400">
+          <div className="hero-chips flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] text-gray-400">
             <span>No upfront fees</span>
             <span className="text-gray-600" aria-hidden="true">&middot;</span>
             <span>Confidential</span>
@@ -93,10 +90,11 @@ export default function HomePage() {
               { stat: 'Free', label: 'Initial consultation' },
               { stat: '3', label: 'Languages served' },
               { stat: '$0', label: 'Upfront cost' },
-            ].map((item) => (
+            ].map((item, i) => (
               <div
                 key={item.label}
-                className="py-7 px-4 text-center hover:bg-[#f5f5f5] transition-colors"
+                className="reveal py-7 px-4 text-center hover:bg-[#f5f5f5] transition-colors"
+                data-delay={String(i * 80)}
               >
                 <div className="text-2xl md:text-3xl font-bold text-[#e07820] mb-1 tracking-tight">
                   {item.stat}
@@ -113,7 +111,7 @@ export default function HomePage() {
       {/* ─── TRUST / INTRO ─── */}
       <section className="py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div>
+          <div className="reveal-left">
             <SectionHeading
               eyebrow="Why it matters"
               subtitle="California has some of the strongest labor protections in the country. Yet many employers fall short."
@@ -134,7 +132,7 @@ export default function HomePage() {
             </a>
           </div>
 
-          <div className="bg-[#111111] rounded-2xl p-8 text-white">
+          <div className="reveal-right bg-[#111111] rounded-2xl p-8 text-white">
             <div className="text-[#e07820] font-bold text-[11px] uppercase tracking-[0.18em] mb-6">
               What we do for you
             </div>
@@ -160,25 +158,33 @@ export default function HomePage() {
       {/* ─── PRACTICE AREAS ─── */}
       <section className="py-20 px-4 sm:px-6 bg-[#f5f5f5]" aria-labelledby="practice-areas-heading">
         <div className="max-w-6xl mx-auto">
-          <SectionHeading
-            center
-            eyebrow="What we handle"
-            subtitle="We represent California employees across a wide range of employment claims."
-          >
-            <span id="practice-areas-heading">Practice Areas</span>
-          </SectionHeading>
+          <div className="reveal">
+            <SectionHeading
+              center
+              eyebrow="What we handle"
+              subtitle="Hover each card to learn more. We represent California employees across a wide range of employment claims."
+            >
+              <span id="practice-areas-heading">Practice Areas</span>
+            </SectionHeading>
+          </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
             {practiceAreas.map((area, i) => (
-              <PracticeAreaCard
+              <div
                 key={area.id}
-                index={i + 1}
-                title={area.titleEn}
-                description={area.descEn}
-                href="/services"
-              />
+                className="reveal"
+                data-delay={String(Math.min(i, 8) * 55)}
+              >
+                <PracticeAreaCard
+                  index={i + 1}
+                  title={area.titleEn}
+                  description={area.descEn}
+                  detail={area.detailEn}
+                  href="/services"
+                />
+              </div>
             ))}
           </div>
-          <div className="text-center mt-10">
+          <div className="reveal text-center mt-10">
             <a
               href="/services"
               className="inline-flex items-center gap-2 border border-gray-300 text-gray-600 hover:border-[#111111] hover:text-[#111111] font-semibold py-2.5 px-6 rounded-lg text-sm transition-colors"
@@ -190,7 +196,10 @@ export default function HomePage() {
       </section>
 
       {/* ─── WHY JACKLAW ─── */}
-      <section className="py-20 px-4 sm:px-6 bg-[#111111]" aria-labelledby="why-jacklaw-heading">
+      <section
+        className="reveal-section py-20 px-4 sm:px-6 bg-[#111111]"
+        aria-labelledby="why-jacklaw-heading"
+      >
         <div className="max-w-5xl mx-auto">
           <SectionHeading
             center
@@ -222,10 +231,11 @@ export default function HomePage() {
                 title: 'No Barriers to Getting Started',
                 desc: 'Free, confidential consultation. Many cases are handled on contingency — you pay nothing unless there is a recovery.',
               },
-            ].map((item) => (
+            ].map((item, i) => (
               <div
                 key={item.num}
-                className="group bg-white/5 hover:bg-white/8 rounded-xl p-7 border border-white/8 hover:border-white/15 transition-all"
+                className="reveal-scale group bg-white/5 hover:bg-white/8 rounded-xl p-7 border border-white/8 hover:border-white/15 transition-all"
+                data-delay={String(i * 100)}
               >
                 <div className="text-[#e07820] font-mono text-sm font-bold mb-4 opacity-70 group-hover:opacity-100 transition-opacity">
                   {item.num}
@@ -241,17 +251,19 @@ export default function HomePage() {
       {/* ─── 3-STEP PROCESS ─── */}
       <section className="py-20 px-4 sm:px-6 bg-white" aria-labelledby="process-heading">
         <div className="max-w-4xl mx-auto">
-          <SectionHeading
-            center
-            eyebrow="How it works"
-            subtitle="Getting started is simple, confidential, and carries no obligation."
-          >
-            <span id="process-heading">Three Steps to Know Your Options</span>
-          </SectionHeading>
+          <div className="reveal">
+            <SectionHeading
+              center
+              eyebrow="How it works"
+              subtitle="Getting started is simple, confidential, and carries no obligation."
+            >
+              <span id="process-heading">Three Steps to Know Your Options</span>
+            </SectionHeading>
+          </div>
 
           <ProcessSteps />
 
-          <div className="mt-14 flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="reveal mt-14 flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href="tel:+18665225529"
               className="bg-[#e07820] hover:bg-[#c9660f] text-white font-bold py-3.5 px-8 rounded-lg text-sm tracking-wide transition-colors shadow-md"
@@ -271,17 +283,19 @@ export default function HomePage() {
       {/* ─── LANGUAGE CALLOUT ─── */}
       <section className="py-20 px-4 sm:px-6 bg-[#f5f5f5]" aria-labelledby="language-callout-heading">
         <div className="max-w-5xl mx-auto">
-          <SectionHeading
-            center
-            eyebrow="Multilingual service"
-          >
-            <span id="language-callout-heading">We Serve Workers in Their Language</span>
-          </SectionHeading>
+          <div className="reveal">
+            <SectionHeading
+              center
+              eyebrow="Multilingual service"
+            >
+              <span id="language-callout-heading">We Serve Workers in Their Language</span>
+            </SectionHeading>
+          </div>
           <p className="text-center text-gray-500 text-[15px] -mt-6 mb-10 max-w-xl mx-auto">
             Your rights in California do not depend on your language or immigration status.
           </p>
           <div className="grid md:grid-cols-2 gap-5">
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+            <div className="reveal-left bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
               <div className="text-[11px] font-bold text-[#e07820] uppercase tracking-[0.18em] mb-3">
                 Español
               </div>
@@ -300,7 +314,7 @@ export default function HomePage() {
                 Consulta gratis en español <span aria-hidden="true">→</span>
               </a>
             </div>
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+            <div className="reveal-right bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
               <div className="text-[11px] font-bold text-[#e07820] uppercase tracking-[0.18em] mb-3">
                 中文
               </div>

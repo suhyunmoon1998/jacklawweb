@@ -53,3 +53,91 @@ a, button {
   transition-duration: 150ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* ─── HERO ENTRANCE (pure CSS, no JS) ─── */
+@keyframes hero-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.hero-badge { animation: hero-up   0.55s 0.10s cubic-bezier(0.16,1,0.3,1) both; }
+.hero-h1    { animation: hero-up   0.65s 0.28s cubic-bezier(0.16,1,0.3,1) both; }
+.hero-desc  { animation: hero-up   0.65s 0.46s cubic-bezier(0.16,1,0.3,1) both; }
+.hero-btns  { animation: hero-up   0.65s 0.62s cubic-bezier(0.16,1,0.3,1) both; }
+.hero-chips { animation: hero-fade 0.70s 0.85s ease both; }
+
+/* ─── SCROLL REVEAL (IntersectionObserver adds .in-view) ─── */
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+  transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+              transform 0.75s cubic-bezier(0.16,1,0.3,1);
+}
+
+.reveal       { opacity: 0; transform: translateY(44px); }
+.reveal-left  { opacity: 0; transform: translateX(-52px); }
+.reveal-right { opacity: 0; transform: translateX(52px); }
+.reveal-scale { opacity: 0; transform: scale(0.92) translateY(20px); }
+
+.reveal.in-view,
+.reveal-left.in-view,
+.reveal-right.in-view,
+.reveal-scale.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* Whole section sliding up — creates "darkness advancing" feel */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(56px);
+  transition: opacity 0.75s ease,
+              transform 0.95s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-section.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-badge, .hero-h1, .hero-desc, .hero-btns, .hero-chips,
+  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-section {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ─── FLIP CARD ─── */
+.flip-card {
+  perspective: 1200px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.65s cubic-bezier(0.23,1,0.32,1);
+  transform-style: preserve-3d;
+}
+.flip-card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}

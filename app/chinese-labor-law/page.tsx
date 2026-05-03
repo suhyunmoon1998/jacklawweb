@@ -187,7 +187,9 @@ export default function ChinesePage() {
                 index={i + 1}
                 title={area.titleZh}
                 description={area.descZh}
+                detail={area.detailEn}
                 href="/chinese-labor-law/contact"
+                ctaLabel="免费咨询 →"
               />
             ))}
           </div>
