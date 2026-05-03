@@ -22,17 +22,38 @@ export default function PracticeAreaCard({
 
   return (
     <div
-      className="flip-card h-[270px] cursor-pointer"
+      style={{ perspective: '1200px', height: '270px' }}
+      className="cursor-pointer"
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
       onClick={() => setFlipped((f) => !f)}
       role="group"
       aria-label={title}
     >
-      <div className={`flip-card-inner${flipped ? ' is-flipped' : ''}`}>
-        {/* Front */}
-        <div className="flip-card-front relative bg-white border border-gray-100 shadow-sm p-6 flex flex-col">
-          <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#e07820]/25" />
+      {/* Rotating inner — inline styles bypass any Tailwind cascade issues */}
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '100%',
+          transformStyle: 'preserve-3d',
+          transition: 'transform 0.65s cubic-bezier(0.23, 1, 0.32, 1)',
+          transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+        }}
+      >
+        {/* ── FRONT ── */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+            borderRadius: '0.75rem',
+            overflow: 'hidden',
+          }}
+          className="bg-white border border-gray-100 shadow-sm p-6 flex flex-col"
+        >
+          <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#e07820]/30" />
           <div className="text-[#e07820] font-mono text-[11px] font-bold tracking-[0.15em] mb-3 opacity-50">
             {String(index).padStart(2, '0')}
           </div>
@@ -43,8 +64,19 @@ export default function PracticeAreaCard({
           </div>
         </div>
 
-        {/* Back */}
-        <div className="flip-card-back relative bg-[#111111] p-6 text-white flex flex-col">
+        {/* ── BACK ── */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+            borderRadius: '0.75rem',
+            overflow: 'hidden',
+            transform: 'rotateY(180deg)',
+          }}
+          className="bg-[#111111] p-6 text-white flex flex-col"
+        >
           <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#e07820]" />
           <div className="text-[#e07820] font-mono text-[11px] font-bold tracking-[0.15em] mb-2 opacity-60">
             {String(index).padStart(2, '0')}
