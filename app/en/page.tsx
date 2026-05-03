@@ -31,7 +31,7 @@ export default function EnglishPage() {
               href="tel:+18665225529"
               className="bg-[#e07820] hover:bg-[#c9660f] text-white font-bold py-4 px-8 rounded-lg text-xl transition-colors shadow-lg focus-visible:outline-2 focus-visible:outline-white"
             >
-              📞 Call (866) JACKLAW
+              Call (866) JACKLAW
             </a>
             <a
               href="/contact"
@@ -62,7 +62,6 @@ export default function EnglishPage() {
                 href="/services"
                 className="group block bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-[#e07820] transition-all p-6 focus-visible:outline-2 focus-visible:outline-[#e07820]"
               >
-                <div className="text-3xl mb-3" role="img" aria-label={area.titleEn}>{area.icon}</div>
                 <h3 className="text-lg font-bold text-[#111111] mb-2 group-hover:text-[#e07820] transition-colors">
                   {area.titleEn}
                 </h3>
@@ -101,7 +100,7 @@ export default function EnglishPage() {
       <CTASection
         headline="Think your workplace rights were violated?"
         subtext="Call (866) JACKLAW or complete our online form for a free, confidential case review. No obligation, no upfront cost."
-        primaryLabel="📞 Call (866) JACKLAW"
+        primaryLabel="Call (866) JACKLAW"
         primaryHref="tel:+18665225529"
         secondaryLabel="Contact form"
         secondaryHref="/contact"
